@@ -1,0 +1,8 @@
+name = Views Contextual Filter Query
+description = Allows url query values to be used as contextual filter arguments
+package = Views
+core = 7.x
+dependencies[] = views
+
+; Views plugins
+files[] = plugins/views/views_plugin_argument_default_query.inc
