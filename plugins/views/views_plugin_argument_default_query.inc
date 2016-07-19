@@ -29,7 +29,7 @@ class views_plugin_argument_default_query extends views_plugin_argument_default 
     $form['default_value'] = array(
       '#type' => 'textfield',
       '#title' => t('Default value'),
-      '#default_value' => $this->options['default_value'],
+      '#default_value' => isset($this->options['default_value']) ? $this->options['default_value'] : '',
       '#description' => t('If you would like this filter to be ignored if there is no matching parameter value, set this field to the Exception value, e.g. "All".'),
     );
   }
@@ -40,9 +40,8 @@ class views_plugin_argument_default_query extends views_plugin_argument_default 
     if (($parameter = $this->options['parameter']) && isset($query_parameters[$parameter])) {
       return $query_parameters[$parameter];
     }
-    else {
-      return $this->options['default_value'];
-    }
+
+    return isset($this->options['default_value']) ? $this->options['default_value'] : '';
   }
 
   function convert_options(&$options) {
