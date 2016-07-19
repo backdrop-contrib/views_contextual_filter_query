@@ -13,6 +13,7 @@ class views_plugin_argument_default_query extends views_plugin_argument_default 
   function option_definition() {
     $options = parent::option_definition();
     $options['parameter'] = array('default' => '');
+    $options['default_value'] = array('default' => '');
 
     return $options;
   }
