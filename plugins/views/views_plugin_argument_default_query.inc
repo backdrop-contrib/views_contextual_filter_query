@@ -10,6 +10,9 @@
  */
 class views_plugin_argument_default_query extends views_plugin_argument_default {
 
+  /**
+ *
+ */
   function option_definition() {
     $options = parent::option_definition();
     $options['parameter'] = array('default' => '');
@@ -18,6 +21,9 @@ class views_plugin_argument_default_query extends views_plugin_argument_default 
     return $options;
   }
 
+  /**
+ *
+ */
   function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
 
@@ -35,16 +41,24 @@ class views_plugin_argument_default_query extends views_plugin_argument_default 
     );
   }
 
+  /**
+ *
+ */
   function get_argument() {
     $query_parameters = backdrop_get_query_parameters();
 
     if (($parameter = $this->options['parameter']) && !empty($query_parameters[$parameter])) {
-      return $query_parameters[$parameter];
+      $argument = $query_parameters[$parameter];
     }
-
-    return isset($this->options['default_value']) ? $this->options['default_value'] : '';
+    else {
+      $argument = isset($this->options['default_value']) ? $this->options['default_value'] : '';
+    }
+    return check_plain($argument);
   }
 
+  /**
+ *
+ */
   function convert_options(&$options) {
     if (!isset($options['parameter']) && isset($this->argument->options['default_argument_query'])) {
       $options['parameter'] = $this->argument->options['default_argument_query'];
