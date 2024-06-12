@@ -2,14 +2,23 @@
 
 /**
  * @file
- * Allows url query parameters to be used as contextual filter arguments
+ * Allows url query parameters to be used as Views contextual filter arguments
  */
 
 /**
  * Implements hook_views_api().
  */
 function views_contextual_filter_query_views_api() {
-  return array(
+  return [
     'api' => 3,
-  );
+  ];
+}
+
+/**
+ * Implements hook_autoload_info().
+ */
+function views_contextual_filter_query_autoload_info() {
+  return [
+    'views_plugin_argument_default_query' => 'plugins/views/views_plugin_argument_default_query.inc',
+  ];
 }

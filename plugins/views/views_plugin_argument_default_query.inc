@@ -36,7 +36,7 @@ class views_plugin_argument_default_query extends views_plugin_argument_default 
   }
 
   function get_argument() {
-    $query_parameters = drupal_get_query_parameters();
+    $query_parameters = backdrop_get_query_parameters();
 
     if (($parameter = $this->options['parameter']) && !empty($query_parameters[$parameter])) {
       return $query_parameters[$parameter];
